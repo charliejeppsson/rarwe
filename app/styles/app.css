@@ -35,6 +35,7 @@
   display: block;
 }
 
+/* Actions */
 .new-band {
   width: 82%;
 }
@@ -50,4 +51,14 @@
 
 .new-song-button {
   margin-left: 20px;
+}
+
+/* Components */
+.rating-panel {
+  float: right;
+}
+
+a.star-rating {
+  color: inherit;
+  text-decoration: none;
 }
