@@ -1,7 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  queryParams: {
+    sortBy: 'sort',
+    searchTerm: 's',
+  },
+
   songCreationStarted: false,
+  sortBy: 'ratingDesc',
+  searchTerm: '',
 
   canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
     return this.get('songCreationStarted') || this.get('model.songs.length');
@@ -28,8 +35,6 @@ export default Ember.Controller.extend({
     }
   },
 
-  searchTerm: '',
-
   matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
     var searchTerm = this.get('searchTerm').toLowerCase();
     return this.get('model.songs').filter(function(song) {
@@ -39,7 +44,6 @@ export default Ember.Controller.extend({
 
   title: '',
 
-  sortBy: 'ratingDesc',
   sortProperties: Ember.computed('sortBy', function() {
     var options = {
       'ratingDesc': 'rating:desc,title:asc',
